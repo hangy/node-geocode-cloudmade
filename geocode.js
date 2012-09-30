@@ -1,4 +1,3 @@
-
 var http = require('http'), querystring = require('querystring');
 
 function Geocoder(opts) {
@@ -25,15 +24,15 @@ Geocoder.prototype.get = function(address, callback) {
 	if (typeof address === "object") {
 		var query = "?query="
 		if (address.address)
-			url += "house:" + ";" + "street:" + ";" ;
+			query += "house:" + ";" + "street:" + ";" ;
 		else if (address.street)
-			url += "street:" + address.street + ";" ;
+			query += "street:" + address.street + ";" ;
 		if (address.city)
-			url += "city:" + address.city + ";" ;
+			query += "city:" + address.city + ";" ;
 		if (address.province)
-			url += "county:" + address.province + ";" ;
+			query += "county:" + address.province + ";" ;
 		if (address.country)
-			url += "country:" + address.country + ";" ;
+			query += "country:" + address.country + ";" ;
 		http.get({
 			host: this.host,
 			path: this.path + query
